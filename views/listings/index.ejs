@@ -1,0 +1,23 @@
+ <% layout("layout/boilerplate")%>
+ 
+ <%- include("../includes/navbar2.ejs")%>
+    <div class="card-container  row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-1">
+
+        <%for(list of arrList){%>
+            <a href="/listings/<%=list._id%>" class="col index-listing">
+                <div class="card index-card" style="width: 17rem;">
+                    <img src="<%=list.image.url%>" class="card-img-top" alt="...">
+                    <div class="card-img-overlay">
+                        <p class="card-title">air-bnb</p>
+                      </div>
+                    <div class="card-body">
+                        <p class="card-text"><b><%=list.title%></b></p>
+                        <p class="card-text">&#8377;<%=list.price.toLocaleString("en-IN")%><i class="tax">+18% GST</i>&nbsp;&nbsp;/night </p>
+                    </div>
+                </div>
+            </a>
+        <%}%>
+    </div>
+        </ul>
+
+ 

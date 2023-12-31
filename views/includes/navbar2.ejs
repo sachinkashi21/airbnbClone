@@ -1,0 +1,62 @@
+<div class="row filters">
+    <ul class="nav col-8 mt-4 mb-3">
+      <li class="" onclick="location.href='/listings?q=Pool-equiped'">
+          <div><i class="fa-solid fa-water-ladder"></i></div>
+          <div><p>Pools</p></div>
+      </li>
+      <li class="" onclick="location.href='/listings?q=Beach'">
+          <div><i class="fa-solid fa-umbrella-beach"></i></div>
+          <div><p>Beach</p></div>
+      </li>
+      <li class="nav-item " onclick="location.href='/listings?q=Castles'">
+          <div><i class="fa-brands fa-fort-awesome"></i></div>
+          <div><p>Castles</p></div>
+      </li>
+      <li class="" onclick="location.href='/listings?q=Farms'">
+          <div><i class="fa-solid fa-tractor"></i></div>
+          <div><p>Farms</p></div>
+      </li>
+      <li class="" onclick="location.href='/listings?q=Mansions'">
+          <div><i class="fa-solid fa-fire"></i></div>
+          <div><p>Trending</p></div>
+      </li>
+      <li class="nav-item " onclick="location.href='/listings?q=Camping'">
+          <div><i class="fa-solid fa-tents"></i></div>
+          <div><p>Camping</p></div>
+      </li>
+      <li class="" onclick="location.href='/listings?q=Mountain-side'">
+          <div><i class="fa-solid fa-mountain-sun"></i></i></div>
+          <div><p>Mountain side</p></div>
+      </li>
+      <li class="" onclick="location.href='/listings?q=Arctic'">
+          <div><i class="fa-regular fa-snowflake"></i></div>
+          <div><p>Arctic</p></div>
+      </li>
+      <li class="nav-item " onclick="location.href='/listings?q=Island'">
+          <div><i class="fa-solid fa-sailboat"></i></div>
+          <div><p>Island</p></div>
+      </li>
+    </ul>
+
+    <div class="col-4 tax-check">
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Display before taxes</label>
+        </div>
+    </div>
+</div>
+
+<script>
+    let taxInput=document.querySelector(".form-check-input");
+    taxInput.addEventListener("click",()=>{
+        let taxes=document.querySelectorAll(".tax");
+        for(let tax of taxes){
+            if(taxInput.checked==true){
+                tax.style.display="none";
+            }
+            else{
+                tax.style.display= "inline";
+            }
+        }
+    })
+</script>

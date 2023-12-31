@@ -1,0 +1,61 @@
+<% layout("layout/boilerplate")%>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h3>Create New Listing</h3>
+            <form action="/listings" novalidate class="needs-validation" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" required id="title" class="form-control title" placeholder="title" name="listing[title]">    
+                    <div class="valid-feedback">looks good</div>
+                    <div class="invalid-feedback">Enter Title</div>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea id="description" required rows="3" class="form-control description" name="listing[description]"></textarea> 
+                    <div class="invalid-feedback">Enter Description</div>   
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image URL</label>
+                    <input type="file" id="image" class="form-control image" placeholder="image/url" name="listing[image]">
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location</label>
+                    <input type="text" required id="location" class="form-control location" placeholder="location" name="listing[location]"> 
+                    <div class="invalid-feedback">Enter Location</div>   
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-md-8">
+                        <label for="country" class="form-label col-4">Country</label>
+                        <input type="text" required id="country" class="form-control country col-8" placeholder="country" name="listing[country]">
+                        <div class="invalid-feedback">Enter Country</div>
+                    </div>
+                    <div class="mb-3 col-md-4">
+                        <label for="category" class="form-label">Category</label>
+                        <select name="listing[category]" id="category" class="form-control form-select" aria-label="Default select example">
+                            <option value="none" selected>None</option>
+                            <option value="Pool-equiped">Pool Equiped</option>
+                            <option value="Beach">Beach Side</option>
+                            <option value="Castles">Castle</option>
+                            <option value="Farms">Farm Side House</option>
+                            <option value="Mansions">Mansion</option>
+                            <option value="Camping">Camping House</option>
+                            <option value="Mountain-side">Mountain Side House</option>
+                            <option value="Arctic">Arctic House</option>
+                            <option value="Island">Boat House</option>
+                        </select>
+                    </div>
+
+                </div>
+                <label for="price" class="form-label">Price</label>
+                <div class="input-group mb-3 col-md-4">
+                    <span class="input-group-text"> &#8377;</span>
+                    <input type="text" required id="price" class="form-control price" placeholder="price" name="listing[price]" aria-label="Amount (to the nearest dollar)">
+                    <span class="input-group-text">.00</span>
+                    <div class="invalid-feedback">Enter a valid number</div>
+                </div>
+                
+                <button class="btn btn-dark mt-3 mb-3 add-btn">Submit</button>
+            </form>
+            
+        </div>
+    </div>

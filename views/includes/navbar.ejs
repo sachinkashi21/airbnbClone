@@ -1,0 +1,47 @@
+
+
+<%if(!currUser){%>
+<nav class="navbar bg-body-tertiary" style="height: 4rem">
+  <div class="container-fluid">
+    <div class="mx-auto">Learn about Guest Favorite and most loved homes on <a class="text-body-secondary" href="/listings">AIRBNB</a>. Please Login to continue</div>
+  </div>
+</nav>
+<%}%>
+<nav class="navbar navbar-expand-sm bg-body-light sticky-top border-bottom border-top">
+    <div class="container-fluid">
+      <a class="navbar-brand col-1" href="/listings">
+        <i class="fa-solid fa-compass fs-1 mx-5"></i>
+
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="background-color: white;">
+        <div class="navbar-nav">
+          <a class="nav-link" href="/listings">Home</a>
+          <a class="nav-link" href="/listings/new">Add Listing</a>
+        </div>
+
+        <div class="navbar-nav search-bar mx-auto">
+          <a href="/listings/new" class="nav-link">Anywhere</a>
+          <a href="/listings" class="nav-link">Any week</a>
+          <form class="d-flex" role="search" method="GET" action="/listings/search">
+            <input class="form-control" type="search" name="search" placeholder="Search category" aria-label="Search">
+            <button class="btn btn-danger" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+          </form>
+        </div>
+
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link btn btn-light rounded-pill" href="/listings/new" >Airbnb your home</a>&nbsp;
+          <% if(!currUser){ %>
+            <button class="btn btn-outline-dark rounded-pill" onclick="location.href = '/signup';">Sign-Up</button>&nbsp;
+            <button class="btn btn-outline-dark rounded-pill" onclick="location.href = '/login';">Log-In</button>&nbsp;
+          <% } %>    
+          <% if(currUser){ %>
+            <a class="nav-link" href="/logout">Log-Out</a>&nbsp;
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
