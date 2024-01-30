@@ -12,4 +12,4 @@
   <li><em>MVC</em>(Model Views Connector) based architecture design pattern</li>
 </ol>
 
-<a href="https://airbnbclone-1sgs.onrender.com/listings">Deplayed Link</a>
+<a href="https://airbnbclone-1sgs.onrender.com/listings">Deployed Link</a>
