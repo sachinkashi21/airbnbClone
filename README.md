@@ -9,7 +9,7 @@
   <li><em>MAPBOX API</em> to implement maps</li>
   <li><em>RENDER</em> for deployment</li>
   <li><em>JOI</em> validater for Schema validation</li>
-  <li><em>MVC</em>(Model Views Connector) based architecture design pattern</li>
+  <li><em>MVC</em>(Model Views Controllers) based architecture design pattern</li>
 </ol>
 
 <a href="https://airbnbclone-1sgs.onrender.com/listings">Deployed Link</a>
