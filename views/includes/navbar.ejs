@@ -1,6 +1,6 @@
 
 
-<%if(!currUser){%>
+<%if(!locals.currUser){%>
 <nav class="navbar bg-body-tertiary" style="height: 4rem">
   <div class="container-fluid">
     <div class="mx-auto">Learn about Guest Favorite and most loved homes on <a class="text-body-secondary" href="/listings">AIRBNB</a>. Please Login to continue</div>
@@ -33,11 +33,11 @@
 
         <div class="navbar-nav ms-auto">
           <a class="nav-link btn btn-light rounded-pill" href="/listings/new" >Airbnb your home</a>&nbsp;
-          <% if(!currUser){ %>
+          <% if(!locals.currUser){ %>
             <button class="btn btn-outline-dark rounded-pill" onclick="location.href = '/signup';">Sign-Up</button>&nbsp;
             <button class="btn btn-outline-dark rounded-pill" onclick="location.href = '/login';">Log-In</button>&nbsp;
           <% } %>    
-          <% if(currUser){ %>
+          <% if(locals.currUser){ %>
             <a class="nav-link" href="/logout">Log-Out</a>&nbsp;
           <% } %>
         </div>

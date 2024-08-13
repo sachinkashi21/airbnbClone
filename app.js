@@ -31,9 +31,9 @@ main().then((res) => {
     console.log("connection established");
 }).catch((err) => {
     console.log(err);
-})
+}) 
 async function main() {
-    await mongoose.connect(dbUrl);
+    await mongoose.connect('mongodb://127.0.0.1:27017/airbnb');
 }
 
 //error handling for async mongoose error and custom errors 
@@ -115,6 +115,7 @@ app.all("*",(req,res,next)=>{
 })
 
 app.use((err, req, res, next)=>{
+    console.log(err);
     let {statusCode=500, message="something went wrong"}= err;
     res.status(statusCode).render("error.ejs",{message});
 });

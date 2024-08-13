@@ -7,7 +7,7 @@ const asyncWrap=require("../utilities/asyncWrap.js");
 
 const multer=require("multer");
 const {storage}=require("../cloudConfig.js");
-const upload=multer({storage});
+const upload=multer({storage}); 
 
 //middleware require
 const {isLoggedIn, isOwner, validateListingSchema}=require("../middlewares.js");
@@ -31,6 +31,10 @@ router.route("/:id")
 .delete(isLoggedIn,isOwner,asyncWrap(listingController.destroyListing))
 
 router.get("/:id/edit",isLoggedIn,isOwner,asyncWrap(listingController.editListingForm));
+
+router.delete("/:id",(req,res)=>{
+    ....;
+})
 
 
 module.exports=router;

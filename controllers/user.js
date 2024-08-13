@@ -27,6 +27,7 @@ module.exports.signUp=async(req,res,next)=>{
         req.flash("error",e.message);
         res.redirect("/signup");
     }
+    
 }
 
 module.exports.logIn=async(req,res)=>{
