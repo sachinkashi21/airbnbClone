@@ -6,7 +6,7 @@ const User=require("./user.js");
 const listingSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true,
+        required: true
     },
     description: {
         type: String,
@@ -17,13 +17,17 @@ const listingSchema = new mongoose.Schema({
         required: true,
     },
     image: {
-        url: String,
-        filename: String,
-        // type: String,
-        // default: "https://images.pexels.com/photos/2476632/pexels-photo-2476632.jpeg",
-        // set: (v) =>  v === ""
-        // ? "https://images.pexels.com/photos/2476632/pexels-photo-2476632.jpeg"
-        // : v ,
+        url: {
+            type: String,
+            default: "https://images.pexels.com/photos/2476632/pexels-photo-2476632.jpeg",
+            set: (v) =>  v === ""
+            ? "https://images.pexels.com/photos/2476632/pexels-photo-2476632.jpeg"
+            : v ,
+        },
+        filename: {
+            type: String,
+            default: "filename"
+        },
     },
     location: {
         type: String,
@@ -45,9 +49,9 @@ const listingSchema = new mongoose.Schema({
     },
     geometry: {
         type: {
-          type: String, // Don't do `{ location: { type: String } }`
-          enum: ['Point'], // 'location.type' must be 'Point'
-        //   required: true
+          type: String, 
+          enum: ['Point'],
+          required: true
         },
         coordinates: {
           type: [Number],

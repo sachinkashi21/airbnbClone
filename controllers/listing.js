@@ -1,10 +1,6 @@
 let Listing=require("../models/listing.js");
 const ExpressErr=require("../utilities/expressError.js");
-
-const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
-const mapToken=process.env.MAP_TOKEN;
-
-const geocodingClient = mbxGeocoding({ accessToken: mapToken });
+let axios=require("axios");
 
 
 module.exports.index=async (req,res,next)=>{
@@ -26,24 +22,59 @@ module.exports.searchBar= async (req,res)=>{
    
 }
 module.exports.addNewListing=async (req,res,next)=>{
-    let url=req.file.path;
-    let filename=req.file.filename;
+    let url,filename;
+    if(req.file){
+        url=req.file.path;
+        filename=req.file.filename;
+    }
     let listing=req.body.listing;
     console.log(listing);
 
-    let response=await geocodingClient
-        .forwardGeocode({
-            query: listing.location,
-            limit:1
-        })
-        .send();
+    // let response=await geocodingClient
+    //     .forwardGeocode({
+    //         query: listing.location,
+    //         limit:1
+    //     })
+    //     .send();
+    let response;
+    try {
+        response = await axios.get('https://nominatim.openstreetmap.org/search', {
+            params: {
+                q: listing.location,  // Location from user input
+                format: 'json',
+                limit: 1
+            }
+        });
+    } catch (error) {
+        console.error('Error during geocoding:', error);
+        req.flash('error', 'Failed to geocode the location.');
+        return res.redirect('/listings/new');
+    }
     
+    if (!response.data.length) {
+        req.flash('error', 'No geocoding results found.');
+        return res.redirect('/listings/new');
+    }
+
+    const geoData = response.data[0];
+    const coordinates = [parseFloat(geoData.lon), parseFloat(geoData.lat)];
+
     let newListing= new Listing(listing);
-    newListing.image.url=url;
-    newListing.image.filename=filename;
+    if(url){
+        newListing.image.url=url;
+        newListing.image.filename=filename;
+    }
+
     newListing.owner=req.user._id;
-    newListing.geometry=response.body.features[0].geometry;
+
+    // newListing.geometry=response.body.features[0].geometry;
+    // console.log(newListing.geometry);
+    newListing.geometry = {
+        type: 'Point',
+        coordinates: coordinates
+    };
     console.log(newListing.geometry);
+    
     let savedListing=await newListing.save();
     console.log(savedListing);
     req.flash("success","listing Saved");

@@ -32,9 +32,6 @@ router.route("/:id")
 
 router.get("/:id/edit",isLoggedIn,isOwner,asyncWrap(listingController.editListingForm));
 
-router.delete("/:id",(req,res)=>{
-    ....;
-})
 
 
 module.exports=router;
