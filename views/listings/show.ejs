@@ -27,7 +27,7 @@
                             </p>
                             <p class="card-text">Country: <%=list.country%>
                             </p>
-                            <p class="card-text">Price: &#8377;<%=list.price.toLocaleString("en-IN")%></p>
+                            <%if(list.price){%><p class="card-text">Price: &#8377;<%=list.price.toLocaleString("en-IN")%></p><%}%>
 
                 </div>
             </div>
