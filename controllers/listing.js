@@ -40,10 +40,14 @@ module.exports.addNewListing=async (req,res,next)=>{
     try {
         response = await axios.get('https://nominatim.openstreetmap.org/search', {
             params: {
-                q: listing.location,  // Location from user input
+                q: listing.location,
                 format: 'json',
                 limit: 1
-            }
+            },
+            headers: {
+                'User-Agent': 'Mozilla/5.0' // Optional: some servers respond better with a User-Agent
+            },
+            family: 4 // Enforces IPv4
         });
     } catch (error) {
         console.error('Error during geocoding:', error);
